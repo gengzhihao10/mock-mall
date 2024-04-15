@@ -1,0 +1,10 @@
+server:
+  port: 8084
+
+spring:
+  application:
+    name: business
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.18.128:8848

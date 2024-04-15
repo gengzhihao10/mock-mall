@@ -1,15 +1,15 @@
 package com.gzh;
 
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-@EnableFeignClients
-public class PlaceOrderStarterApp {
+public class ItemStockStarterApp {
+
     public static void main(String[] args) {
-        SpringApplication.run(PlaceOrderStarterApp.class,args);
+        SpringApplication.run(ItemStockStarterApp.class,args);
     }
 }
