@@ -1,0 +1,10 @@
+server:
+  port: 80
+
+spring:
+  application:
+    name: place_order
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.18.128:8848
