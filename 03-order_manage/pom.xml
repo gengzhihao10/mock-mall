@@ -4,13 +4,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>mock-mall</artifactId>
-        <groupId>com.test</groupId>
+        <groupId>org.example</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>03-order_manage</artifactId>
-    <description>订单服务，构建订单，对订单做处理</description>
+    <description>订单服务，对订单做处理</description>
 
 
 </project>
