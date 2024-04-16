@@ -14,3 +14,17 @@ spring:
     username: mock-mall
     password: mock-mall
     virtual-host: /mock-mall
+    #消息从生产者到 Broker有一个 ConfirmCallback确认模式，当消息被Broker接收到就会触发ConfirmCallback回调，因此，通过此回调函数就可以知道有没有到达Broker
+    publisher-confirm-type: correlated
+    #消息从交换机到 队列 投递失败有一个ReturnCallback回退模式
+    publisher-returns: true
+    template:
+      #mandatory：交换器无法根据自身类型和路由键找到一个符合条件的队列时的处理方式
+      #为true：RabbitMQ会调用Basic.Return命令将消息返回给生产者
+      mandatory: true
+  #数据源连接信息
+  datasource:
+    username: root
+    password: 123456
+    url: jdbc:mysql://192.168.18.128:3306/rabbitmq?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver

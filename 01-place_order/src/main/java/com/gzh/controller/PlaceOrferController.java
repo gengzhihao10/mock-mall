@@ -2,10 +2,17 @@ package com.gzh.controller;
 
 import com.gzh.client.*;
 import com.gzh.config.RabbitMQConfig;
+import com.gzh.util.GlobalCache;
+import org.springframework.amqp.rabbit.connection.CorrelationData;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
 
 @RestController
 public class PlaceOrferController {
@@ -40,7 +47,15 @@ public class PlaceOrferController {
         orderManageClient.create();
 
         String userAndOrderInfo = "test message";
-        rabbitTemplate.convertAndSend(RabbitMQConfig.PLACE_ORDER_EXCHANGE,"",userAndOrderInfo);
+        String uuid = UUID.randomUUID().toString();
+        Map map = new HashMap<>();
+        map.put("id",uuid);
+        map.put("message",userAndOrderInfo);
+        map.put("exchange",RabbitMQConfig.PLACE_ORDER_EXCHANGE);
+        map.put("routingKey","");
+        map.put("sendTime",new Date());
+        GlobalCache.set(uuid,map);
+        rabbitTemplate.convertAndSend(RabbitMQConfig.PLACE_ORDER_EXCHANGE,"",userAndOrderInfo,new CorrelationData(uuid));
         //3. 调用优惠券服务，预扣除使用到的优惠券
 //        couponClient.coupon();
         //4. 调用用户积分服务，预扣除用户使用的积分
