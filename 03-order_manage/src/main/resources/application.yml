@@ -8,3 +8,18 @@ spring:
     nacos:
       discovery:
         server-addr: 192.168.18.128:8848
+  #数据源连接信息
+  datasource:
+    username: root
+    password: 123456
+    url: jdbc:mysql://192.168.18.128:3306/rabbitmq?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  rabbitmq:
+    host: 192.168.18.128
+    port: 5672
+    username: mock-mall
+    password: mock-mall
+    virtual-host: /mock-mall
+    listener:
+      simple:
+        acknowledge-mode: manual
