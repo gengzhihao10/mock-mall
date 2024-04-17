@@ -17,3 +17,9 @@ spring:
     listener:
       simple:
         acknowledge-mode: manual
+  #数据源连接信息
+  datasource:
+    username: root
+    password: 123456
+    url: jdbc:mysql://192.168.18.128:3306/rabbitmq?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
